@@ -1,25 +1,16 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:todo_app_frontend/app/constants/customs/custom_text.dart';
-import 'package:todo_app_frontend/app/modules/auth/login/controllers/login_controller.dart';
-import 'package:todo_app_frontend/app/modules/auth/login/widgets/mobile_login_form.dart';
-
-import '../../../../constants/customs/custom_elevated_btn.dart';
-import '../../../../constants/customs/custom_textfield.dart';
-import '../../../../constants/themes/app_color_theme.dart';
-import '../../../../constants/widgets/glow_orb.dart';
-import '../../../../constants/widgets/social_button.dart';
-import '../../register/controllers/register_controller.dart';
 import 'package:get/get.dart';
+import 'package:todo_app_frontend/app/constants/customs/custom_text.dart';
+import 'package:todo_app_frontend/app/constants/themes/app_color_theme.dart';
+import 'package:todo_app_frontend/app/modules/auth/register/widgets/mobile_register_form.dart';
 
-class LoginMobile extends StatelessWidget {
-  const LoginMobile({super.key});
+import '../../../../constants/widgets/glow_orb.dart';
+
+class RegisterMobile extends StatelessWidget {
+  const RegisterMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final register = Get.find<LoginController>();
-
     return Scaffold(
       body: Stack(
         children: [
@@ -92,7 +83,7 @@ class LoginMobile extends StatelessWidget {
                         colors: [AppColors.primaryDark, AppColors.secondary],
                       ).createShader(bounds),
                       child: Text(
-                        'Welcome Back',
+                        'Sign Up',
                         style: TextStyle(
                           fontSize: 34,
                           fontWeight: FontWeight.w800,
@@ -104,13 +95,13 @@ class LoginMobile extends StatelessWidget {
                     SizedBox(height: 6),
 
                     CustomText(
-                      text: 'You have been missed',
+                      text: 'Register to get more experiences',
                       textSize: 13,
                       color: AppColors.lightText,
                       fontWeight: FontWeight.w300,
                     ),
                     SizedBox(height: 28),
-                    LoginForm(),
+                    MobileRegisterForm(),
                     SizedBox(height: 40),
 
                     Container(
@@ -123,10 +114,10 @@ class LoginMobile extends StatelessWidget {
                           SizedBox(width: 3),
                           GestureDetector(
                             onTap: () {
-                              Get.offNamed('/register');
+                              Get.offNamed('/login');
                             },
                             child: CustomText(
-                              text: 'Sign Up',
+                              text: 'Sign In',
                               // textSize: 13,
                               fontWeight: FontWeight.w500,
                             ),

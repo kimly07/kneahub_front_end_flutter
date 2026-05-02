@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todo_app_frontend/app/constants/themes/app_theme.dart';
+import 'package:todo_app_frontend/app/constants/customs/custom_text.dart';
+import 'package:todo_app_frontend/app/constants/themes/app_color_theme.dart';
 
 class CustomElevatedBtn extends StatelessWidget {
   final String? text;
@@ -26,7 +27,7 @@ class CustomElevatedBtn extends StatelessWidget {
     required this.width,
     this.textColor,
     required this.isLoading,
-    this.textSize = 18.0,
+    this.textSize = 16.0,
     this.icon,
     this.circularProgressColor,
     this.shadows,
@@ -38,51 +39,68 @@ class CustomElevatedBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       final bool loading = isLoading.value;
+      final Color resolvedTextColor = textColor ?? AppColors.darkText;
 
-      return Container(
+      return SizedBox(
         width: width,
         height: height,
-        decoration: BoxDecoration(
-          borderRadius: borderRadius,
-          gradient: loading ? null : gradient,
-          boxShadow: shadows,
-        ),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.zero,
             backgroundColor: gradient != null
                 ? Colors.transparent
                 : (btnBackgroundColor ?? Colors.black),
             disabledBackgroundColor: gradient != null
-                ? Colors.transparent
-                : AppTheme.dark().colorScheme.primary.withValues(alpha: 0.5),
+                ? AppColors.loginBgLight
+                : Colors.grey.shade300,
             shadowColor: Colors.transparent,
-            foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(borderRadius: borderRadius),
+            foregroundColor: resolvedTextColor,
+            elevation: 0,
           ),
           onPressed: loading ? null : onPressed,
-          child: loading
-              ? SizedBox(
-                  height: 22,
-                  width: 22,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2.5,
-                    color: circularProgressColor ?? Colors.white,
-                  ),
-                )
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (icon != null) ...[icon!, const SizedBox(width: 10)],
-                    Text(
-                      text ?? '',
-                      style: TextStyle(
-                        color: textColor ?? Colors.white,
-                        fontSize: textSize,
-                        fontWeight: FontWeight.w500,
+          child: Ink(
+            decoration: BoxDecoration(
+              borderRadius: borderRadius,
+              gradient: (!loading && gradient != null) ? gradient : null,
+              color: (!loading && gradient != null)
+                  ? null
+                  : (loading
+                        ? (btnBackgroundColor ?? Colors.black).withValues(alpha:  0.6)
+                        : null),
+              boxShadow: loading ? null : shadows,
+            ),
+            child: SizedBox(
+              width: width,
+              height: height,
+              child: Center(
+                child: loading
+                    ? SizedBox(
+                        height: 22,
+                        width: 22,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2.5,
+                          color: circularProgressColor ?? Colors.white,
+                        ),
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (icon != null) ...[
+                            icon!,
+                            const SizedBox(width: 10),
+                          ],
+                          CustomText(
+                            text: text ?? '',
+                            color: resolvedTextColor,
+                            textSize: textSize,
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
+              ),
+            ),
+          ),
         ),
       );
     });
