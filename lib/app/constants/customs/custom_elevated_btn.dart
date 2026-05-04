@@ -11,8 +11,8 @@ class CustomElevatedBtn extends StatelessWidget {
   final Color? circularProgressColor;
   final List<BoxShadow>? shadows;
   final VoidCallback? onPressed;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final RxBool isLoading;
   final double textSize;
   final Widget? icon;
@@ -24,14 +24,14 @@ class CustomElevatedBtn extends StatelessWidget {
     this.gradient,
     this.onPressed,
     this.text,
-    required this.width,
+    this.width,
     this.textColor,
     required this.isLoading,
     this.textSize = 16.0,
     this.icon,
     this.circularProgressColor,
     this.shadows,
-    required this.height,
+    this.height,
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),
   });
 
@@ -95,6 +95,7 @@ class CustomElevatedBtn extends StatelessWidget {
                             text: text ?? '',
                             color: resolvedTextColor,
                             textSize: textSize,
+                            fontWeight: FontWeight.w600,
                           ),
                         ],
                       ),

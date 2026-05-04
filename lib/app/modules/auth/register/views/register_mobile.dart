@@ -34,21 +34,29 @@ class RegisterMobile extends StatelessWidget {
             child: GlowOrb(color: AppColors.orbPurple, size: 280),
           ),
           Positioned(
-            bottom: 10,
+            bottom: 100,
             right: -70,
+            child: GlowOrb(color: AppColors.orbPink, size: 240),
+          ),
+          Positioned(
+            bottom: 0,
+            left: -70,
             child: GlowOrb(color: AppColors.orbBlue, size: 240),
           ),
           Positioned(
             top: 180,
             right: 10,
-            child: GlowOrb(color: AppColors.orbPink, size: 140),
+            child: GlowOrb(color: AppColors.primary, size: 140),
           ),
           Positioned(
             bottom: 120,
             left: 0,
             child: GlowOrb(color: AppColors.orbGreen, size: 120),
           ),
-          Positioned(child: GlowOrb(color: AppColors.orbBlue, size: 200)),
+          Positioned(
+            top: 300,
+            child: GlowOrb(color: AppColors.primary, size: 300),
+          ),
           SafeArea(
             child: Center(
               child: SingleChildScrollView(
@@ -82,15 +90,21 @@ class RegisterMobile extends StatelessWidget {
                       shaderCallback: (bounds) => LinearGradient(
                         colors: [AppColors.primaryDark, AppColors.secondary],
                       ).createShader(bounds),
-                      child: Text(
-                        'Sign Up',
-                        style: TextStyle(
-                          fontSize: 34,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white,
-                          letterSpacing: -0.5,
-                        ),
+                      child: CustomText(
+                        text: 'Sing Up',
+                        textSize: 35,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.darkText,
                       ),
+                      // Text(
+                      //   'Sign Up',
+                      //   style: TextStyle(
+                      //     fontSize: 34,
+                      //     fontWeight: FontWeight.w800,
+                      //     color: Colors.white,
+                      //     letterSpacing: -0.5,
+                      //   ),
+                      // ),
                     ),
                     SizedBox(height: 6),
 
@@ -110,18 +124,45 @@ class RegisterMobile extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(width: 3),
-                          CustomText(text: "Don't have an account?"),
-                          SizedBox(width: 3),
-                          GestureDetector(
-                            onTap: () {
-                              Get.offNamed('/login');
+                          ShaderMask(
+                            shaderCallback: (bd) {
+                              return LinearGradient(
+                                colors: [
+                                  AppColors.lightText,
+                                  AppColors.lightText,
+                                ],
+                              ).createShader(bd);
                             },
                             child: CustomText(
-                              text: 'Sign In',
-                              // textSize: 13,
-                              fontWeight: FontWeight.w500,
+                              text: "Already have account?",
+                              color: Colors.white,
                             ),
                           ),
+                          // CustomText(text: "Don't have an account?"),
+                          SizedBox(width: 3),
+                          ShaderMask(
+                            shaderCallback: (bounds) => LinearGradient(
+                              colors: [AppColors.primary, AppColors.primary],
+                            ).createShader(bounds),
+                            child: GestureDetector(
+                              onTap: () => Get.offNamed('/login'),
+                              child: CustomText(
+                                text: 'Login',
+                                // textSize: 35,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.darkText,
+                              ),
+                            ),
+                          ),
+                          // GestureDetector(
+                          //   onTap: () {
+                          //     Get.offNamed('/login');
+                          //   },
+                          //   child: CustomText(
+                          //     text: 'Sign In',
+                          //     fontWeight: FontWeight.w500,
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

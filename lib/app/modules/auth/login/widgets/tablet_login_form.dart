@@ -1,138 +1,162 @@
-import 'dart:developer';
-
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:todo_app_frontend/app/constants/customs/custom_elevated_btn.dart';
 import 'package:todo_app_frontend/app/constants/customs/custom_text.dart';
-import 'package:todo_app_frontend/app/constants/customs/custom_textBtn.dart';
-import 'package:todo_app_frontend/app/constants/customs/custom_textfield.dart';
 import 'package:todo_app_frontend/app/constants/themes/app_color_theme.dart';
-import 'package:todo_app_frontend/app/constants/themes/font_theme.dart';
-import 'package:todo_app_frontend/app/modules/auth/login/controllers/login_controller.dart';
+
+import '../../../../constants/widgets/glow_orb.dart';
+import 'mobile_login_form.dart';
 
 class TabletLoginForm extends StatelessWidget {
-  TabletLoginForm({super.key});
-
-  final controller = Get.find<LoginController>();
+  const TabletLoginForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: controller.formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+    return Scaffold(
+      body: Stack(
         children: [
-          Row(
-            children: [
-              CustomText(
-                text: 'Login'.toUpperCase(),
-                textSize: 30,
-                fontWeight: FontWeight.w700,
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.bgGradientStart,
+                  AppColors.bgGradientMiddle,
+                  AppColors.bgGradientEnd,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
-            ],
+            ),
           ),
-          SizedBox(height: 20),
-          CustomTextField(
-            controller: controller.emailController,
-            label: 'Email',
-            prefixIcon: Icons.email_outlined,
-            backGround: Colors.transparent,
-            hintText: "Email Address",
-            hintTextColor: AppColors.darkBg,
-            border: BorderSide(color: AppColors.glassBorder, width: 1),
-            errorFormText: TextStyle(fontSize: 15),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                var error = 'Please input your email';
-                return error;
-              }
-              return null;
-            },
+
+          Positioned(
+            top: -80.h,
+            left: -60.w,
+            child: GlowOrb(color: AppColors.orbPurple, size: 350.r),
           ),
-          SizedBox(height: 20),
-          CustomTextField(
-            controller: controller.passwordController,
-            label: 'Password',
-            prefixIcon: Icons.lock_outline,
-            backGround: Colors.transparent,
-            hintText: "Password",
-            isPassword: true,
-            hintTextColor: AppColors.darkBg,
-            border: BorderSide(color: AppColors.glassBorder, width: 1),
-            errorFormText: TextStyle(fontSize: 15),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Please input your password";
-              }
-              return null;
-            },
+          Positioned(
+            bottom: 10.h,
+            right: -70.w,
+            child: GlowOrb(color: AppColors.orbBlue, size: 300.r),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              CustomTextBtn(text: 'Forgot password?'),
-            ],
+          Positioned(
+            top: 180.h,
+            right: 10.w,
+            child: GlowOrb(color: AppColors.orbPink, size: 180.r),
           ),
-          SizedBox(height: 20,),
-          CustomElevatedBtn(
-            borderRadius: BorderRadius.circular(30),
-            width: double.infinity,
-            isLoading: controller.isLoading,
-            height: 50,
-            text: 'Login',
-            // btnBackgroundColor: Colors.pinkAccent,
-            circularProgressColor: Colors.white,
-            gradient: LinearGradient(
-              colors: [
-                AppColors.primaryDark,
-                AppColors.bgColorFive,
-                AppColors.bgColorTwo,
+          Positioned(
+            bottom: 120.h,
+            left: 0,
+            child: GlowOrb(color: AppColors.orbGreen, size: 160.r),
+          ),
+
+          SafeArea(
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 90.r,
+                          height: 90.r,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                              colors: [
+                                AppColors.primary,
+                                AppColors.primaryLight,
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.primary.withValues(alpha: 0.35),
+                                blurRadius: 40.r,
+                                spreadRadius: 6.r,
+                              ),
+                            ],
+                          ),
+                          child: Icon(
+                            Icons.login,
+                            color: Colors.white,
+                            size: 42.r,
+                          ),
+                        ),
+                        SizedBox(height: 24.h),
+                        ShaderMask(
+                          shaderCallback: (bounds) => LinearGradient(
+                            colors: [AppColors.primaryDark, AppColors.secondary],
+                          ).createShader(bounds),
+                          child: CustomText(
+                            text: 'Welcome Back',
+                            textSize: 42.sp,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.darkText,
+                          ),
+                        ),
+                        SizedBox(height: 8.h),
+                        CustomText(
+                          text: 'You have been missed',
+                          textSize: 16.sp,
+                          color: AppColors.lightText,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                Expanded(
+                  flex: 1,
+                  child: Center(
+                    child: SingleChildScrollView(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 40.w,
+                        vertical: 40.h,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          MobileLoginForm(),
+                          SizedBox(height: 32.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CustomText(
+                                text: "Don't have an account?",
+                                textSize: 14.sp,
+                              ),
+                              SizedBox(width: 4.w),
+                              ShaderMask(
+                                shaderCallback: (bounds) => LinearGradient(
+                                  colors: [
+                                    AppColors.primary,
+                                    AppColors.primary,
+                                  ],
+                                ).createShader(bounds),
+                                child: GestureDetector(
+                                  onTap: () => Get.offNamed('/register'),
+                                  child: CustomText(
+                                    text: 'Sign Up',
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.darkText,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
-            onPressed: () {
-              controller.login();
-              log('click btn login');
-            },
           ),
-          SizedBox(height: 50),
-          Row(
-            children: [
-              Expanded(child: Divider(color: AppColors.glassBorder)),
-              SizedBox(width: 10),
-              CustomText(
-                text: 'or continue with',
-                color: AppColors.lightTextSub,
-              ),
-              SizedBox(width: 10),
-
-              Expanded(child: Divider(color: AppColors.glassBorder)),
-            ],
-          ),
-          SizedBox(height: 40),
-          GestureDetector(
-            onTap: () {},
-            child: Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                border: Border.all(color: Colors.grey.shade300),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 4,
-                    offset: Offset(0, 1),
-                  ),
-                ],
-              ),
-              child: Center(
-                child: Image.asset("assets/google.png", height: 28, width: 28),
-              ),
-            ),
-          ),
-          SizedBox(height: 10),
         ],
       ),
     );

@@ -1,183 +1,164 @@
-import 'dart:ui';
-import 'package:fluid_background/fluid_background.dart';
-
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_app_frontend/app/constants/customs/custom_text.dart';
-import 'package:todo_app_frontend/app/constants/themes/font_theme.dart';
-import 'package:todo_app_frontend/app/modules/auth/login/widgets/tablet_login_form.dart';
-import '../../../../constants/customs/auth_custom_bg_auth.dart';
+import 'dart:ui';
+import 'package:get/get.dart';
+import '../../../../constants/customs/custom_text.dart';
 import '../../../../constants/themes/app_color_theme.dart';
+import '../../../../constants/widgets/glow_orb.dart';
 import '../widgets/mobile_login_form.dart';
+
 
 class LoginTablet extends StatelessWidget {
   const LoginTablet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(
-            top: -40,
-            left: -100,
-            child: AuthCustomBgAuth(size: 300, color: AppColors.bgColorTwo),
-          ),
-          Positioned(
-            bottom: -100,
-            right: -170,
-            child: AuthCustomBgAuth(size: 500, color: AppColors.bgColorThree),
-          ),
-          Positioned(
-            bottom: 50,
-            left: -140,
-            child: AuthCustomBgAuth(size: 600, color: AppColors.loginBgOne),
-          ),
-
-          Center(
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              child: ClipRRect(
-                // borderRadius: BorderRadius.circular(28),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 45,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              AppColors.bgColorTwo,
-                              AppColors.bgColorTwo.withValues(alpha: 0.75),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                        ),
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              top: -30,
-                              right: -30,
-                              child: Container(
-                                width: 120,
-                                height: 120,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white.withValues(alpha: 0.08),
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              bottom: -50,
-                              left: -50,
-                              child: Container(
-                                width: 200,
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white.withValues(alpha: 0.06),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(46),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                        width: 30,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Icon(
-                                          Icons.check_rounded,
-                                          color: AppColors.bgColorTwo,
-                                          size: 20,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 10),
-                                      CustomText(
-                                        text: 'KneaHub',
-                                        textSize: 20,
-                                        color: AppColors.darkText,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ],
-                                  ),
-                                  const Spacer(),
-
-                                  CustomText(
-                                    text: 'Manage your tasks\nthe best way',
-                                    color: AppColors.darkText,
-                                    textSize: 30,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  const SizedBox(height: 16),
-
-                                  CustomText(
-                                    text:
-                                        'Stay organized and productive with\nyour daily tasks, all in one place.',
-                                    color: AppColors.darkText,
-                                    textSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  const Spacer(),
-
-                                  Center(
-                                    child: Container(
-                                      width: 180,
-                                      height: 180,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white.withValues(
-                                          alpha: 0.1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Icon(
-                                        Icons.task_alt_rounded,
-                                        size: 90,
-                                        color: Colors.white.withValues(
-                                          alpha: 0.6,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-
-                                  const Spacer(),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    Expanded(
-                      flex: 50,
-                      child: Container(
-                        color: Colors.white,
-                        child: Center(
-                          child: SingleChildScrollView(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 88,
-                              vertical: 32,
-                            ),
-                            child: TabletLoginForm(),
-
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.bgGradientStart,
+                  AppColors.bgGradientMiddle,
+                  AppColors.bgGradientEnd,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
+            ),
+          ),
+
+          Positioned(
+            top: -80.h,
+            left: -60.w,
+            child: GlowOrb(color: AppColors.orbPurple, size: 350.r),
+          ),
+          Positioned(
+            bottom: 10.h,
+            right: -70.w,
+            child: GlowOrb(color: AppColors.orbBlue, size: 300.r),
+          ),
+          Positioned(
+            top: 180.h,
+            right: 10.w,
+            child: GlowOrb(color: AppColors.orbPink, size: 180.r),
+          ),
+          Positioned(
+            bottom: 120.h,
+            left: 0,
+            child: GlowOrb(color: AppColors.orbGreen, size: 160.r),
+          ),
+
+          SafeArea(
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 90.r,
+                          height: 90.r,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                              colors: [
+                                AppColors.primary,
+                                AppColors.primaryLight,
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.primary.withValues(alpha: 0.35),
+                                blurRadius: 40.r,
+                                spreadRadius: 6.r,
+                              ),
+                            ],
+                          ),
+                          child: Icon(
+                            Icons.login,
+                            color: Colors.white,
+                            size: 42.r,
+                          ),
+                        ),
+                        SizedBox(height: 24.h),
+                        ShaderMask(
+                          shaderCallback: (bounds) => LinearGradient(
+                            colors: [AppColors.primaryDark, AppColors.secondary],
+                          ).createShader(bounds),
+                          child: CustomText(
+                            text: 'Welcome Back',
+                            textSize: 42.sp,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.darkText,
+                          ),
+                        ),
+                        SizedBox(height: 8.h),
+                        CustomText(
+                          text: 'You have been missed',
+                          textSize: 16.sp,
+                          color: AppColors.lightText,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                Expanded(
+                  flex: 1,
+                  child: Center(
+                    child: SingleChildScrollView(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 40.w,
+                        vertical: 40.h,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+
+                          // form somrab login
+                          MobileLoginForm(),
+
+                          SizedBox(height: 32.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CustomText(
+                                text: "Don't have an account?",
+                                textSize: 14.sp,
+                              ),
+                              SizedBox(width: 4.w),
+                              ShaderMask(
+                                shaderCallback: (bounds) => LinearGradient(
+                                  colors: [
+                                    AppColors.primary,
+                                    AppColors.primary,
+                                  ],
+                                ).createShader(bounds),
+                                child: GestureDetector(
+                                  onTap: () => Get.offNamed('/register'),
+                                  child: CustomText(
+                                    text: 'Sign Up',
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.darkText,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

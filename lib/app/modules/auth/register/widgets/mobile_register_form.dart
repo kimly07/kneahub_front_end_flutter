@@ -1,14 +1,11 @@
 import 'dart:ui';
-
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:todo_app_frontend/app/constants/customs/custom_textBtn.dart';
 
 import '../../../../constants/customs/custom_elevated_btn.dart';
-import '../../../../constants/customs/custom_text.dart';
 import '../../../../constants/customs/custom_textfield.dart';
 import '../../../../constants/themes/app_color_theme.dart';
-import '../../../../constants/themes/font_theme.dart';
 import '../../../../constants/widgets/social_button.dart';
 
 class MobileRegisterForm extends StatelessWidget {
@@ -17,72 +14,85 @@ class MobileRegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: 420),
+      constraints: BoxConstraints(maxWidth: 420.w),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.55),
-              borderRadius: BorderRadius.circular(28),
+              color: Colors.white.withValues(alpha: 0.45),
+              borderRadius: BorderRadius.circular(28.r),
               border: Border.all(
                 color: Colors.white.withValues(alpha: 2),
-                width: 1.2,
+                width: 1.2.w,
               ),
             ),
-            padding: EdgeInsets.all(24),
+            padding: EdgeInsets.all(24.r),
             child: Column(
               children: [
-                SizedBox(height: 14),
+                SizedBox(height: 14.h),
                 CustomTextField(
                   label: 'Full Name',
                   hintText: 'tinfy@email.com',
                   prefixIcon: Icons.mail_outline_rounded,
                 ),
-                SizedBox(height: 14),
+                SizedBox(height: 14.h),
                 CustomTextField(
                   label: 'Username',
                   hintText: 'tinfy007',
                   prefixIcon: Icons.mail_outline_rounded,
                 ),
-                SizedBox(height: 14),
+                SizedBox(height: 14.h),
                 CustomTextField(
                   label: 'Password',
                   hintText: 'Password at least 8 letters',
                   prefixIcon: Icons.lock_outline,
                 ),
-                SizedBox(height: 30),
-
-                Container(
+                SizedBox(height: 30.h),
+                CustomElevatedBtn(
+                  text: "Sign Up",
+                  icon: Icon(Icons.create,size: 25,),
                   width: double.infinity,
-                  height: 52,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [AppColors.primary, AppColors.primaryLight],
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
+                  height: 48,
+                  textSize: 20,
+                  isLoading: RxBool(false),
+                  gradient: LinearGradient(
+                    colors: [AppColors.primary, AppColors.primaryLight],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  ),
+                  shadows: [
+                    BoxShadow(
+                      color: AppColors.primary.withValues(alpha: 0.35),
+                      blurRadius: 24,
+                      offset: Offset(0, 8),
                     ),
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.primary.withValues(alpha: 0.35),
-                        blurRadius: 24,
-                        offset: Offset(0, 8),
-                      ),
-                    ],
-                  ),
-                  child: CustomElevatedBtn(
-                    btnBackgroundColor: AppColors.primary,
-                    text: 'Login',
-                    width: double.infinity,
-                    isLoading: RxBool(false),
-                    height: 20.0,
-                    onPressed: () {},
-                  ),
+                  ],
+                  onPressed: () async {},
                 ),
-                SizedBox(height: 28),
-
+                // Container(
+                //   width: double.infinity,
+                //   height: 52.h,
+                //   decoration: BoxDecoration(
+                //     gradient: LinearGradient(
+                //       colors: [AppColors.primary, AppColors.primaryLight],
+                //       begin: Alignment.centerLeft,
+                //       end: Alignment.centerRight,
+                //     ),
+                //     borderRadius: BorderRadius.circular(16.r),
+                //     boxShadow: [
+                //       BoxShadow(
+                //         color: AppColors.primary.withValues(alpha: 0.35),
+                //         blurRadius: 24.r,
+                //         offset: Offset(0, 8.h),
+                //       ),
+                //     ],
+                //   ),
+                //   child:
+                //
+                // ),
+                SizedBox(height: 28.h),
                 Row(
                   children: [
                     Expanded(
@@ -91,11 +101,11 @@ class MobileRegisterForm extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12),
+                      padding: EdgeInsets.symmetric(horizontal: 12.w),
                       child: Text(
                         'or continue with',
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 14.sp,
                           color: AppColors.lightText,
                           fontWeight: FontWeight.w300,
                         ),
@@ -108,14 +118,19 @@ class MobileRegisterForm extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 28),
-
+                SizedBox(height: 28.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SocialButton(
+                      boxShape: BoxShape.circle,
+                      backgroundColor: AppColors.lightBg,
+                      height: 60.h,
+                      imageSize: 40.r,
                       onPress: () {},
                       assetImage: AssetImage('assets/google.png'),
+                      textColor: AppColors.darkText,
+                      fontWeight: FontWeight.w500,
                     ),
                   ],
                 ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:todo_app_frontend/app/constants/customs/custom_text.dart';
-import 'package:todo_app_frontend/app/constants/themes/app_color_theme.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
 class SocialButton extends StatelessWidget {
   final String? label;
