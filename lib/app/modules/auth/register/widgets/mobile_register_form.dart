@@ -52,13 +52,13 @@ class MobileRegisterForm extends StatelessWidget {
                 SizedBox(height: 30.h),
                 CustomElevatedBtn(
                   text: "Sign Up",
-                  icon: Icon(Icons.create,size: 25,),
+                  icon: Icon(Icons.create, size: 20),
                   width: double.infinity,
-                  height: 48,
-                  textSize: 20,
+                  height: 47,
+                  textSize: 16,
                   isLoading: RxBool(false),
                   gradient: LinearGradient(
-                    colors: [AppColors.primary, AppColors.primaryLight],
+                    colors: [AppColors.primary, AppColors.loginBgLight],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),

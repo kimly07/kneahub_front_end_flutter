@@ -123,7 +123,6 @@ class LoginTablet extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
 
-                          // form somrab login
                           MobileLoginForm(),
 
                           SizedBox(height: 32.h),

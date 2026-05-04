@@ -13,7 +13,7 @@ class AppColors {
   static const bgColorFive = Color.fromARGB(255, 223, 146, 253);
   // Background Gradients
   static const bgGradientStart = Color(0xFFEEE9FF);
-  static const bgGradientMiddle = Color(0xFFDDD1FF);
+  static const bgGradientMiddle = Color(0xFFE4DEFF);
   static const bgGradientEnd = Color(0xFFE8F4FF);
 
   static const primary = Color(0xFF8B5CF6);

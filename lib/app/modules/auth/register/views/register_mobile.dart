@@ -154,15 +154,6 @@ class RegisterMobile extends StatelessWidget {
                               ),
                             ),
                           ),
-                          // GestureDetector(
-                          //   onTap: () {
-                          //     Get.offNamed('/login');
-                          //   },
-                          //   child: CustomText(
-                          //     text: 'Sign In',
-                          //     fontWeight: FontWeight.w500,
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),

@@ -46,13 +46,13 @@ class MobileLoginForm extends StatelessWidget {
 
                 CustomElevatedBtn(
                   text: "Login",
-                  icon: Icon(Icons.login),
+                  icon: Icon(Icons.login,size: 20,),
                   width: double.infinity,
-                  height: 45,
+                  height: 47,
                   textSize: 16,
                   isLoading: RxBool(false),
                   gradient: LinearGradient(
-                    colors: [AppColors.primary, AppColors.primary],
+                    colors: [AppColors.primary, AppColors.loginBgLight],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
@@ -97,18 +97,15 @@ class MobileLoginForm extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: SocialButton(
-                        boxShape: BoxShape.circle,
-                        backgroundColor: AppColors.lightBg,
-                        height: 60.w,
-                        // imageSize: 40.h,
-                        onPress: () {},
-                        assetImage: AssetImage('assets/google.png'),
-                        textColor: AppColors.darkText,
-                        textSize: 18,
-                        fontWeight: FontWeight.w500,
-                      ),
+                    SocialButton(
+                      boxShape: BoxShape.circle,
+                      backgroundColor: AppColors.lightBg,
+                      height: 60.h,
+                      imageSize: 40.r,
+                      onPress: () {},
+                      assetImage: AssetImage('assets/google.png'),
+                      textColor: AppColors.darkText,
+                      fontWeight: FontWeight.w500,
                     ),
                   ],
                 ),

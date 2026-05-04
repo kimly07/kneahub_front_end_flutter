@@ -45,14 +45,14 @@ class LoginMobile extends StatelessWidget {
             child: GlowOrb(color: AppColors.orbPink, size: 140.r),
           ),
           Positioned(
-            bottom: 120.h,
-            left: 0,
-            child: GlowOrb(color: AppColors.orbGreen, size: 120.r),
+            bottom: 0.h,
+            left: -100.h,
+            child: GlowOrb(color: AppColors.orbPink, size: 220.r),
           ),
           Positioned(
             top: 400.h,
             left: 50.w,
-            child: GlowOrb(color: AppColors.primary, size: 330.r),
+            child: GlowOrb(color: AppColors.orbPink, size: 330.r),
           ),
           SafeArea(
             child: Center(

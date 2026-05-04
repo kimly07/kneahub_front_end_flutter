@@ -15,8 +15,8 @@ class GlowOrb extends StatelessWidget {
         shape: BoxShape.circle,
         gradient: RadialGradient(
           colors: [
-            color.withValues(alpha: 0.1),
-            color.withValues(alpha: 0.1),
+            color.withValues(alpha: 0.3),
+            color.withValues(alpha: 0.0),
           ],
         ),
       ),
